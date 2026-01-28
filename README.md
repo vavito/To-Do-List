@@ -1,7 +1,7 @@
 # 📝 To-Do List App
 
-![GitHub repo size](https://img.shields.io/github/repo-size/seu-usuario/seu-repositorio?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/seu-usuario/seu-repositorio?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/vavito/To-Do-List?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/vavito/To-Do-List?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge)
 
 Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnologias web fundamentais. O foco principal deste projeto foi a prática intensiva de manipulação do DOM e a criação de uma interface limpa e responsiva.
