@@ -1,0 +1,345 @@
+/* --- RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Inter;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0f0f;
+}
+
+/* --- REGRAS GERAIS --- */
+button {
+    cursor: pointer;
+}
+
+.hidden,
+.task-container.hidden {
+    display: none;
+}
+
+.finished-task-text {
+    text-decoration: line-through;
+    color: #818181;
+}
+
+/* --- PERSONALIZAÇÃO --- */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container {
+    background-color: #262626;
+    color: #ebebeb;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-container h1 {
+    font-size: 30pt;
+    cursor: default;
+}
+
+#main-paragraph {
+    color: #ebebeb;
+    margin-top: 80px;
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+.add-task-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#add-task-input {
+    width: 600px;
+    height: 50px;
+    border: none;
+    border-radius: 40px;
+    padding: 30px;
+    font-size: 14pt;
+    background-color: #262626;
+    color: #ebebeb;
+    outline: none
+}
+
+#add-task-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    transition: .3s;
+}
+
+#add-task-btn:hover {
+    background-color: #5c5c5c;
+    color: #ebebeb;
+}
+
+.fa-plus {
+    font-size: 14pt;
+}
+
+.task-list-container {
+    background-color: #262626;
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    align-items: first baseline;
+    width: 660px;
+    border-radius: 15px;
+    padding: 20px 50px;
+    color: #ebebeb;
+}
+
+.task-list-header {
+    width: 550px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list-title {
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+.task-list-searchbar {
+    align-self: flex-end;
+    outline: none;
+    border-radius: 15px;
+    border: none;
+    padding: 5px 15px;
+    font-style: italic;
+    background-color: #5c5c5c;
+    color: #ebebeb;
+    
+}
+
+.task-list-searchbar::placeholder {
+    color: #b1b1b1;
+}
+
+.task-list-info {
+    font-weight: 300;
+    color: #b1b1b1;
+    margin-top: 50px;
+    align-self: center;
+}
+
+#task-list {
+    margin-top: 40px;
+    list-style: none;
+    /* max-height para criar scroll */
+    max-height: 384px;
+    overflow-y: auto;
+    scrollbar-color: #5c5c5c #262626;
+    scrollbar-width: thin;
+    /* paddin-right para dar espaco entre a scrollbar */
+    padding-right: 10px;
+}
+
+#task-list::-webkit-scrollbar {
+    width: 1px;
+}
+
+.task-container {
+    display: flex;
+    gap: 5px;
+    width: 550px;
+    justify-content: space-between;
+    border-bottom: 2px solid #5c5c5c;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.task-container li {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 12pt;
+    font-weight: 300;
+}
+
+/* remove a borda nativa que aparece em volta do texto que está sendo editado
+e adiciona uma nova borda vermelha personalizada */
+.task-container li[contenteditable="true"] {
+    outline: none;
+    background-color: rgb(54, 54, 54);
+}
+
+.task-btn-container {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-task-btn,
+.delete-task-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 12pt;
+}
+
+.complete-task-btn {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #5c5c5c;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: .3s;
+}
+
+.complete-task-btn:hover {
+    background-color: #616161;
+}
+
+.edit-task-btn {
+    color: #22C55E;
+    transition: .3s;
+}
+
+.edit-task-btn:hover {
+    color: #198d43;
+}
+
+.delete-task-btn {
+    color: #EF4444;
+    transition: .3s;
+}
+
+.delete-task-btn:hover {
+    color: #9c2c2c;
+}
+
+/* --- ANIMAÇÕES --- */
+/* Animação de entrada para novas tarefas */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação de saída (opcional, requer JS para esperar a animação terminar) */
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+.task-container {
+    /* Adicionando a animação de entrada */
+    animation: slideIn 0.3s ease-out;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+/* Efeito suave no hover da tarefa */
+.task-container:hover {
+    background-color: #2a2a2a;
+}
+
+/* Feedback visual ao completar */
+.finished-task-text {
+    text-decoration: line-through;
+    color: #818181;
+    transition: all 0.4s ease;
+    opacity: 0.6;
+}
+
+/* Melhorando a transição dos botões */
+#add-task-btn, .complete-task-btn, .edit-task-btn, .delete-task-btn {
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+#add-task-btn:active, .task-btn-container button:active {
+    transform: scale(0.9); /* Efeito de clique */
+}
+
+/* --- ADAPTAÇÃO PARA MOBILE --- */
+@media (max-width: 768px) {
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Ajustando o texto principal */
+    #main-paragraph {
+        margin-top: 40px;
+        font-size: 16pt;
+        text-align: center;
+    }
+
+    /* O input agora ocupa a maior parte da largura da tela */
+    #add-task-input {
+        width: 75vw; /* Usa 75% da largura da janela */
+        padding: 20px;
+        font-size: 12pt;
+    }
+
+    /* O container principal da lista precisa encolher */
+    .task-list-container {
+        width: 90%; /* Deixa uma margem nas laterais */
+        margin-top: 40px;
+        padding: 20px; /* Reduz o padding interno */
+    }
+
+    /* Ajustando o cabeçalho da lista (Título e Busca) */
+    .task-list-header {
+        width: 100%;
+        flex-direction: column; /* Um embaixo do outro no celular */
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .task-list-searchbar {
+        width: 100%; /* Busca ocupa a largura toda */
+        align-self: center;
+    }
+
+    /* Garante que a lista de tarefas use toda a largura interna disponível */
+    #task-list {
+        width: 100%;
+        padding-right: 0; /* Ajuste se a scrollbar estiver atrapalhando */
+    }
+
+    /* Ajustando a tarefa em si */
+    .task-container {
+        width: 100%; 
+        display: flex;
+        justify-content: space-between; /* Garante que o texto fique de um lado e botões do outro */
+        align-items: center;
+        gap: 10px; /* Espaço mínimo entre os elementos */
+    }
+
+    .task-container li {
+        flex: 1; /* Ocupa todo o espaço disponível, empurrando os botões para o canto */
+        flex-grow: 1;
+        text-align: left;
+        word-break: break-all; /* Força a quebra de palavras muito longas */
+        overflow-wrap: break-word; /* Garante que o texto não saia do container */
+        white-space: normal; /* Permite que o texto pule para a linha de baixo */
+        line-height: 1.4;
+        margin-right: 10px; /* Garante que o texto não cole nos botões */
+    }
+
+    .task-btn-container {
+        display: flex;
+        flex-shrink: 0; /* IMPEDIR que os botões espremam ou sumam */
+    }
+}
