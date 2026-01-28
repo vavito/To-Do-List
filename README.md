@@ -23,6 +23,9 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 ![Tela inicial](./screenshots/tela-inicial.png)
 *Exemplo da interface principal e sistema de busca.*
 
+![Tela inicial](./screenshots/tela-inicial.png)
+*Exemplo da interface principal e sistema de busca.*
+
 ---
 
 ## 🛠 Tecnologias
@@ -63,7 +66,6 @@ Para visualizar o projeto localmente, siga estes passos:
 
 - [ ] **LocalStorage:** Persistência de dados para não perder as tarefas ao atualizar a página.
 - [ ] **Filtros de Status:** Visualizar apenas tarefas "Pendentes" ou "Concluídas".
-- [ ] **Dark Mode:** Implementação de tema escuro para conforto visual.
 - [ ] **Confirmação de Exclusão:** Modal para evitar remoções acidentais.
 
 ---
