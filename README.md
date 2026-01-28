@@ -21,10 +21,16 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 ## 📸 Screenshots
 
 ![Tela inicial](./screenshots/tela-inicial.png)
-*Exemplo da interface principal e sistema de busca.*
+*Exemplo da interface principal ao entrar.*
 
-![Tela inicial](./screenshots/tela-inicial.png)
-*Exemplo da interface principal e sistema de busca.*
+![Tela com tarefas](./screenshots/tela-com-tarefas.png)
+*Exemplo da interface com tarefas adicionadas.*
+
+![Tela com busca](./screenshots/tela-com-pesquisa-1.png)
+*Exemplo da interface usando o sistema de filtro de tarefas.*
+
+![Tela com busca](./screenshots/tela-com-pesquisa-2.png)
+*Exemplo da interface usando o sistema de filtro de tarefas.*
 
 ---
 
