@@ -1,6 +1,5 @@
 # 📝 To-Do List App
 
-![GitHub repo size](https://img.shields.io/github/repo-size/vavito/To-Do-List?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/vavito/To-Do-List?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge)
 
