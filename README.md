@@ -7,7 +7,7 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - **Adicionar Tarefas:** Criação dinâmica de itens na lista.
 - **Conclusão:** Feedback visual (texto riscado) para tarefas finalizadas.
@@ -18,7 +18,7 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ![Tela inicial](./screenshots/tela-inicial.png)
 *Exemplo da interface principal ao entrar.*
@@ -34,7 +34,7 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 
 ---
 
-## 🛠 Tecnologias
+## Tecnologias
 
 - **HTML5:** Estrutura semântica dos elementos.
 - **CSS3:** Estilização moderna, Flexbox e animações de feedback.
@@ -43,7 +43,7 @@ Aplicação simples e funcional de **lista de tarefas**, desenvolvida com tecnol
 
 ---
 
-## 🚀 Como executar o projeto
+## Como executar o projeto
 
 Para visualizar o projeto localmente, siga estes passos:
 
@@ -60,7 +60,7 @@ Para visualizar o projeto localmente, siga estes passos:
 
 ---
 
-## 🧠 Regras de Negócio e Comportamento
+## Regras de Negócio e Comportamento
 
 - **Validação:** Não é possível adicionar tarefas vazias ou apenas com espaços.
 - **Estado de Edição:** Ao marcar uma tarefa como concluída, a opção de edição é desabilitada para manter a integridade do histórico.
@@ -68,7 +68,7 @@ Para visualizar o projeto localmente, siga estes passos:
 
 ---
 
-## 📈 Possíveis Melhorias Futuras
+## Possíveis Melhorias Futuras
 
 - [ ] **LocalStorage:** Persistência de dados para não perder as tarefas ao atualizar a página.
 - [ ] **Filtros de Status:** Visualizar apenas tarefas "Pendentes" ou "Concluídas".
@@ -76,7 +76,7 @@ Para visualizar o projeto localmente, siga estes passos:
 
 ---
 
-## 👤 Autor
+## Autor
 
 Desenvolvido por **João Victor**.
 - [LinkedIn](https://www.linkedin.com/in/joao-victor-moreira-almeida/)
