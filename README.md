@@ -70,7 +70,7 @@ Para visualizar o projeto localmente, siga estes passos:
 
 ## Possíveis Melhorias Futuras
 
-- [x] **LocalStorage:** Persistência de dados para não perder as tarefas ao atualizar a página.
+- [x] **LocalStorage:** Persistência de dados para não perder as tarefas ao atualizar a página. *"(melhoria implementada após a publicação do projeto)"
 - [ ] **Filtros de Status:** Visualizar apenas tarefas "Pendentes" ou "Concluídas".
 - [ ] **Confirmação de Exclusão:** Modal para evitar remoções acidentais.
 
