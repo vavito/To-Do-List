@@ -18,31 +18,26 @@ function verificarTarefas() {
     }
 }
 
-addTaskForm.addEventListener("submit", (evento) => {
-    // prevenindo a pagina de dar reload ao clicar no botao tipo submit
-    evento.preventDefault();
-
-    // o trim remove espaços antes e depois do texto
-    // também evita textos vazios
-    const taskText = addTaskInput.value.trim();
-
+function adicionarTarefaNaTela(taskText, concluida = false) {
     if (taskText === "") return;
 
-    // removendo o informativo de "suas tarefas aparecerão aqui..."
     const taskListInfo = document.querySelector(".task-list-info");
     taskListInfo.classList.add("hidden");
 
-    // criando a estrutura da tarefa
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("task-container");
 
     const taskTextElement = document.createElement("li");
     taskTextElement.textContent = taskText;
+    
+    // Se a tarefa vier do localStorage como concluída, aplicamos a classe
+    if (concluida) {
+        taskTextElement.classList.add("finished-task-text");
+    }
 
     const taskBtnContainer = document.createElement("div");
     taskBtnContainer.classList.add("task-btn-container");
 
-    // criando os botões concluir, editar e remover tarefa
     const completeTaskBtn = document.createElement("button");
     completeTaskBtn.type = "button";
     completeTaskBtn.classList.add("complete-task-btn");
@@ -57,13 +52,24 @@ addTaskForm.addEventListener("submit", (evento) => {
     deleteTaskBtn.classList.add("delete-task-btn");
     deleteTaskBtn.innerHTML = `<i class="fa-solid fa-x"></i>`;
 
-    // organizando a hierarquia da estrutura da tarefa
+    // Se estiver concluída, não precisa do botão editar
+    if (concluida) editTaskBtn.remove();
+
     taskBtnContainer.append(editTaskBtn, deleteTaskBtn);
     taskContainer.append(completeTaskBtn, taskTextElement, taskBtnContainer);
     taskList.appendChild(taskContainer);
+}
 
-    addTaskInput.value = "";
-})
+addTaskForm.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const texto = addTaskInput.value.trim();
+    
+    if (texto !== "") {
+        adicionarTarefaNaTela(texto);
+        salvarTarefasNoLocalStorage();
+        addTaskInput.value = "";
+    }
+});
 
 taskList.addEventListener("click", (evento) => {
     // COMPLETE
@@ -77,6 +83,7 @@ taskList.addEventListener("click", (evento) => {
 
         const editBtn = taskContainer.querySelector(".edit-task-btn");
         editBtn.remove();
+        salvarTarefasNoLocalStorage();
     }
 
     // DELETE
@@ -91,6 +98,7 @@ taskList.addEventListener("click", (evento) => {
             taskListInfo.classList.remove("hidden");
         }
         
+        salvarTarefasNoLocalStorage();
         return;
     }
 
@@ -113,6 +121,8 @@ taskList.addEventListener("click", (evento) => {
         if (taskTextElement.textContent.trim() === "") {
             taskTextElement.textContent = "Tarefa sem nome";
         }
+
+        salvarTarefasNoLocalStorage();
     }, { once: true });
 })
 
@@ -130,3 +140,32 @@ taskListSearchbar.addEventListener("keyup", () => {
         }
     })
 })
+
+// === Local Storage ===
+function salvarTarefasNoLocalStorage() {
+    const tarefas = [];
+    const todosOsItens = document.querySelectorAll(".task-container li");
+
+    todosOsItens.forEach(item => {
+        tarefas.push({
+            texto: item.textContent,
+            concluida: item.classList.contains("finished-task-text")
+        });
+    });
+
+    // Transformamos o array em string e salvamos
+    localStorage.setItem("minhas_tarefas", JSON.stringify(tarefas));
+}
+
+function carregarTarefasDoLocalStorage() {
+    const tarefasSalvas = localStorage.getItem("minhas_tarefas");
+
+    if (tarefasSalvas) {
+        const listaDeTarefas = JSON.parse(tarefasSalvas);
+        listaDeTarefas.forEach(tarefa => {
+            adicionarTarefaNaTela(tarefa.texto, tarefa.concluida);
+        });
+    }
+}
+
+carregarTarefasDoLocalStorage();
