@@ -1,9 +1,16 @@
 "use strict";
 
+import { salvarTarefas, carregarTarefas } from './modules/localStorage.js';
+
 const addTaskForm = document.querySelector("#add-task-form");
 const addTaskInput = document.querySelector("#add-task-input");
 const taskList = document.querySelector("#task-list");
 const taskListSearchbar = document.querySelector(".task-list-searchbar");
+const tarefasIniciais = carregarTarefas(); 
+
+tarefasIniciais.forEach(tarefa => {
+    adicionarTarefaNaTela(tarefa.texto, tarefa.concluida);
+});
 
 // Aqui criamos uma função para verificar se existem tarefas cadastradas
 function verificarTarefas() {
@@ -66,7 +73,7 @@ addTaskForm.addEventListener("submit", (evento) => {
     
     if (texto !== "") {
         adicionarTarefaNaTela(texto);
-        salvarTarefasNoLocalStorage();
+        salvarTarefas();
         addTaskInput.value = "";
     }
 });
@@ -83,7 +90,7 @@ taskList.addEventListener("click", (evento) => {
 
         const editBtn = taskContainer.querySelector(".edit-task-btn");
         editBtn.remove();
-        salvarTarefasNoLocalStorage();
+        salvarTarefas();
     }
 
     // DELETE
@@ -98,7 +105,7 @@ taskList.addEventListener("click", (evento) => {
             taskListInfo.classList.remove("hidden");
         }
         
-        salvarTarefasNoLocalStorage();
+        salvarTarefas();
         return;
     }
 
@@ -122,7 +129,7 @@ taskList.addEventListener("click", (evento) => {
             taskTextElement.textContent = "Tarefa sem nome";
         }
 
-        salvarTarefasNoLocalStorage();
+        salvarTarefas();
     }, { once: true });
 })
 
@@ -140,32 +147,3 @@ taskListSearchbar.addEventListener("keyup", () => {
         }
     })
 })
-
-// === Local Storage ===
-function salvarTarefasNoLocalStorage() {
-    const tarefas = [];
-    const todosOsItens = document.querySelectorAll(".task-container li");
-
-    todosOsItens.forEach(item => {
-        tarefas.push({
-            texto: item.textContent,
-            concluida: item.classList.contains("finished-task-text")
-        });
-    });
-
-    // Transformamos o array em string e salvamos
-    localStorage.setItem("minhas_tarefas", JSON.stringify(tarefas));
-}
-
-function carregarTarefasDoLocalStorage() {
-    const tarefasSalvas = localStorage.getItem("minhas_tarefas");
-
-    if (tarefasSalvas) {
-        const listaDeTarefas = JSON.parse(tarefasSalvas);
-        listaDeTarefas.forEach(tarefa => {
-            adicionarTarefaNaTela(tarefa.texto, tarefa.concluida);
-        });
-    }
-}
-
-carregarTarefasDoLocalStorage();
